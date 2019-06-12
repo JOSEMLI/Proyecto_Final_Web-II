@@ -1,0 +1,46 @@
+﻿@model List<Proyecto_Final_Web_II.Models.Sensor>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="card text-center">Gestion de Sensor</h2>
+
+<div class="text-right">
+    <a href="~/sensor/agregareditar" class="btn btn-secondary text-right">
+        Nuevo registro
+    </a>
+</div>
+<br />
+
+<table id="datatable1" class="table">
+    <thead>
+        <tr>
+            <th style="width:50px">Id</th>
+            <th style="width:70px">Nombre</th>
+            <th style="width:70px">Alimentacion</th>
+            <th style="width:70px">Rango</th>
+            <th style="width:70px">Frecuencia</th>
+            <th style="width:70px">Estado</th>
+            <th style="width:200px" align="center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sen in Model)
+        {
+            <tr>
+                <th>@(sen.sensor_id)</th>
+                <th>@(sen.nomb_sensor)</th>
+                <th>@(sen.aliment_sensor)</th>
+                <th>@(sen.rango_med_sensor)</th>
+                <th>@(sen.frec_pul_sensor)</th>
+                <th>@(sen.estado_sensor)</th>
+                <th style="align-content:center">
+                    <a href="~/sensor/visualizar/@sen.sensor_id" class="btn btn-warning">Visualizar</a>
+                    <a href="~/sensor/agregareditar/@sen.sensor_id" class="btn btn-primary">Modificar</a>
+                    <a href="~/sensor/eliminar/@sen.sensor_id" class="btn btn-danger" onclick="return confirm('¿Estas seguro de eliminar... ?');">Eliminar</a>
+
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>

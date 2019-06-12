@@ -1,0 +1,49 @@
+﻿@model List<Proyecto_Final_Web_II.Models.Control>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="card text-center">Gestion de Control</h2>
+
+<div class="text-right">
+    <a href="~/control/agregareditar" class="btn btn-secondary text-right">
+        Nuevo registro
+    </a>
+</div>
+<br />
+
+
+<table id="datatable1" class="table">
+    <thead>
+        <tr>
+            <th style="width:50px">Id</th>
+            <th style="width:70px">Reservorio</th>
+            <th style="width:70px">Servo</th>
+            <th style="width:70px">Usuario</th>
+            <th style="width:70px">Servo</th>
+            <th style="width:70px">Fecha</th>
+            <th style="width:70px">Estado</th>
+            <th style="width:200px" align="center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ctl in Model)
+        {
+            <tr>
+                <th>@(ctl.control_id )</th>
+                <th>@(ctl.reservorio_id)</th>
+                <th>@(ctl.servo_id)</th>
+                <th>@(ctl.usuario_id)</th>
+                <th>@(ctl.servo_control)</th>
+                <th>@(ctl.fecha_control)</th>
+                <th>@(ctl.estado_control)</th>
+                <th style="align-content:center">
+                    <a href="~/control/visualizar/@ctl.control_id " class="btn btn-warning">Visualizar</a>
+                    <a href="~/control/agregareditar/@ctl.control_id " class="btn btn-primary">Modificar</a>
+                    <a href="~/control/eliminar/@ctl.control_id " class="btn btn-danger" onclick="return confirm('¿Estas seguro de eliminar... ?');">Eliminar</a>
+
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>

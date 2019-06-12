@@ -1,0 +1,48 @@
+﻿@model List<Proyecto_Final_Web_II.Models.Reservorio>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="card text-center">Gestion de Reservorio</h2>
+
+<div class="text-right">
+    <a href="~/reservorio/agregareditar" class="btn btn-secondary text-right">
+        Nuevo registro
+    </a>
+</div>
+<br />
+
+<table id="datatable1" class="table">
+    <thead>
+        <tr>
+            <th style="width:50px">Id</th>
+            <th style="width:70px">Sensor</th>
+            <th style="width:70px">Servo</th>
+            <th style="width:70px">Cantidad agua</th>
+            <th style="width:70px">Distancia</th>
+            <th style="width:70px">Fecha</th>
+            <th style="width:70px">Estado</th>
+            <th style="width:200px" align="center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reser in Model)
+        {
+            <tr>
+                <th>@(reser.reservorio_id )</th>
+                <th>@(reser.sensor_id)</th>
+                <th>@(reser.servo_id)</th>
+                <th>@(reser.cant_agua_reser)</th>
+                <th>@(reser.dist_llenado_reser)</th>
+                <th>@(reser.fecha_reser)</th>
+                <th>@(reser.estado_reservorio)</th>
+                <th style="align-content:center">
+                    <a href="~/reservorio/visualizar/@reser.reservorio_id " class="btn btn-warning">Visualizar</a>
+                    <a href="~/reservorio/agregareditar/@reser.reservorio_id " class="btn btn-primary">Modificar</a>
+                    <a href="~/reservorio/eliminar/@reser.reservorio_id " class="btn btn-danger" onclick="return confirm('¿Estas seguro de eliminar... ?');">Eliminar</a>
+
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>

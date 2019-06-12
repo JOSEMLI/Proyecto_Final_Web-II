@@ -1,0 +1,49 @@
+﻿@model List<Proyecto_Final_Web_II.Models.Persona>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="card text-center">Gestion de Personas</h2>
+
+<div class="text-right">
+    <a href="~/persona/agregareditar" class="btn btn-secondary text-right">
+        Nuevo registro
+    </a>
+</div>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width:50px">Id</th>
+            <th style="width:60px">Codigo</th>
+            <th style="width:80px">Apellidos y Nombres</th>
+            <th style="width:50px">Edad</th>
+            <th style="width:50px">DNI</th>
+            <th style="width:50px">Sexo</th>
+            <th style="width:50px">Celular</th>
+            <th style="width:40px">Estado</th>
+            <th style="width:200px" align="center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <th>@(p.persona_id)</th>
+                <th>@(p.cod_per)</th>
+                <th>@(p.apel_per + " , " + p.nomb_per)</th>
+                <th>@(p.edad_per)</th>
+                <th>@(p.dni_per)</th>
+                <th>@(p.sexo_per)</th>
+                <th>@(p.cel_per)</th>
+                <th>@(p.estado_per)</th>
+                <th style="align-content:center">
+                    <a href="~/persona/visualizar/@p.persona_id" class="btn btn-warning">Visualizar</a>
+                    <a href="~/persona/agregareditar/@p.persona_id" class="btn btn-primary">Modificar</a>
+                    <a href="~/persona/eliminar/@p.persona_id" class="btn btn-danger" onclick="return confirm('¿Estas seguro de eliminar... ?');">Eliminar</a>
+
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>

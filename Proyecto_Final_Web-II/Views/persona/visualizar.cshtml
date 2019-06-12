@@ -1,0 +1,47 @@
+﻿@model Proyecto_Final_Web_II.Models.Persona
+@{
+    ViewBag.Title = "visualizar";
+}
+
+<center><h2 class="card text-center">visualizar</h2></center>
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/persona"> Persona</a>
+        </li>
+        <li class=" breadcrumb-item active">@(Model.apel_per + " , " + Model.nomb_per)</li>
+
+    </ol>
+
+</nav>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        Informacion detallada de la Persona
+    </div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>Id</dt>
+            <dd>@Model.persona_id</dd>
+            <dt>Codigo</dt>
+            <dd>@Model.cod_per</dd>
+            <dt>Apellido</dt>
+            <dd>@Model.apel_per</dd>
+            <dt>Nombre</dt>
+            <dd>@Model.nomb_per</dd>
+            <dt>Edad</dt>
+            <dd>@Model.edad_per</dd>
+            <dt>Dni</dt>
+            <dd>@Model.dni_per</dd>
+            <dt>Sexo</dt>
+            <dd>@Model.sexo_per</dd>
+            <dt>Celular</dt>
+            <dd>@Model.cel_per</dd>
+            <dt>Estado</dt>
+            <dd>@Model.estado_per</dd>
+        </dl>
+    </div>
+
+</div>
+<br /><br />

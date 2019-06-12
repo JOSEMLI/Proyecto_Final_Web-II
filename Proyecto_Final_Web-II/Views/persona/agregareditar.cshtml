@@ -1,0 +1,85 @@
+﻿@model Proyecto_Final_Web_II.Models.Persona
+@{
+    ViewBag.Title = "agregareditar";
+}
+
+<center><h2 class="card text-center">Agregar Editar</h2></center>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/persona"> Persona</a>
+        </li>
+        <li class="breadcrumb-item active">
+            @(Model.persona_id > 0 ? Model.apel_per + " , " + Model.nomb_per : "Nuevo Registro")
+        </li>
+    </ol>
+</nav>
+
+@using (Html.BeginForm("guardar", "persona", FormMethod.Post, new { id = "frm-persona" }))
+{
+    @Html.HiddenFor(x => x.persona_id)
+    <div class="card">
+        <div class="card-header">
+            Informacion de la Persona
+            <div class="card-body">
+                <div class="form-group">
+                    @Html.Label("ID")
+                    @Html.TextBoxFor(x => x.persona_id, new { @class = "form-control", disabled = true })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Codigo")
+                    @Html.TextBoxFor(x => x.cod_per, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.cod_per, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Nombre")
+                    @Html.TextBoxFor(x => x.nomb_per, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.nomb_per, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Apellido")
+                    @Html.TextBoxFor(x => x.apel_per, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.apel_per, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Edad")
+                    @Html.TextBoxFor(x => x.edad_per, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.edad_per, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("DNI")
+                    @Html.TextBoxFor(x => x.dni_per, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.dni_per, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Sexo")
+                    <select name="sexo_per" class="form-control">
+                        <option @(Model.sexo_per == "" ? "Selected" : "") value="">-Seleccione-</option>
+                        <option @(Model.sexo_per == "M" ? "Selected" : "") value="M">Masculino</option>
+                        <option @(Model.sexo_per == "F" ? "Selected" : "") value="F">Femenino</option>
+                    </select>
+                    @Html.ValidationMessageFor(x => x.sexo_per, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Celular")
+                    @Html.TextBoxFor(x => x.cel_per, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.cel_per, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Estado")
+                    <select name="estado_per" class="form-control">
+                        <option @(Model.estado_per == "" ? "Selected" : "") value="">-Seleccione-</option>
+                        <option @(Model.estado_per == "A" ? "Selected" : "") value="A">Activo</option>
+                        <option @(Model.estado_per == "I" ? "Selected" : "") value="I">Inactivo</option>
+                    </select>
+                    @Html.ValidationMessageFor(x => x.estado_per, null, new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card text-right">
+        <button type="submit" class="btn btn-primary">Grabar</button>
+        <a href="~/persona" class="btn btn-danger">Cancelar</a>
+    </div>
+}

@@ -1,0 +1,86 @@
+﻿@model Proyecto_Final_Web_II.Models.Sensor
+@{
+    ViewBag.Title = "agregareditar";
+}
+<center><h2 class="card text-center">Agregar Editar</h2></center>
+
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/sensor"> Sensor</a>
+        </li>
+        <li class=" breadcrumb-item active">
+            @(Model.sensor_id > 0 ? Model.nomb_sensor : "Nuevo Registro")
+        </li>
+    </ol>
+</nav>
+
+@using (Html.BeginForm("guardar", "sensor", FormMethod.Post, new { id = "frm-sensor" }))
+{
+    @Html.HiddenFor(x => x.sensor_id)
+
+    <div class="card">
+        <div class="card-header">
+            Informacion del Sensor
+            <div class="card-body">
+                <div class="form-group">
+                    @Html.Label("Id")
+                    @Html.TextBoxFor(x => x.sensor_id, new { @class = "form-control", disabled = true })
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Nombre")
+                    @Html.TextBoxFor(x => x.nomb_sensor, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.nomb_sensor, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Alimentacion")
+                    @Html.TextBoxFor(x => x.aliment_sensor, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.aliment_sensor, null, new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Rango")
+                    @Html.TextBoxFor(x => x.rango_med_sensor, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.rango_med_sensor, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Frecuencia pulso")
+                    @Html.TextBoxFor(x => x.frec_pul_sensor, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.frec_pul_sensor, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Corriente Alimentacion")
+                    @Html.TextBoxFor(x => x.corr_ali_sensor, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.corr_ali_sensor, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Apertura")
+                    @Html.TextBoxFor(x => x.apertura_sensor, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.apertura_sensor, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Señal")
+                    @Html.TextBoxFor(x => x.senal_disp_sensor, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.senal_disp_sensor, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Estado")
+                    <select name="estado_sensor" class="form-control">
+                        <option @(Model.estado_sensor == "" ? "Selected" : "") value="">-Seleccione-</option>
+                        <option @(Model.estado_sensor == "A" ? "Selected" : "") value="A">Activo</option>
+                        <option @(Model.estado_sensor == "I" ? "Selected" : "") value="I">Inactivo</option>
+                    </select>
+                    @Html.ValidationMessageFor(x => x.estado_sensor, null, new { @class = "text-danger" })
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="card text-right">
+        <button type="submit" class="btn btn-primary">Grabar</button>
+        <a href="~/sensor" class="btn btn-danger">Cancelar</a>
+    </div>
+    <br /><br />
+}

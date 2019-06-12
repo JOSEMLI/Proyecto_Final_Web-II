@@ -1,0 +1,137 @@
+﻿
+@{
+    Layout = null;
+    string controlador = ViewContext.RouteData.Values["controller"].ToString().ToLower();
+    Proyecto_Final_Web_II.Models.Usuario usuario = new Proyecto_Final_Web_II.Models.Usuario().obtener(Proyecto_Final_Web_II.Models.SessionHelper.GetUser());
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sistema ARTC</title>
+    <link href="~/estilos/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/estilos/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/estilos/js/jquery-3.3.0.min.js"></script>
+
+</head>
+<body>
+    @if (controlador != "login")
+    {
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+                <a class="navbar-brand" href="~/principal/Index">
+                    <b>ARTC</b>
+                    <img src="~/iconos/icono.png" width="40" height="40" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mantenimiento
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="~/persona/Index">Persona</a>
+                                <a class="dropdown-item" href="~/usuario/Index">Usuario</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="~/reservorio/Index">Reservorio</a>
+                                <a class="dropdown-item" href="~/control/Index">Control</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="~/sensor/Index">Sensor</a>
+                                <a class="dropdown-item" href="~/servo/Index">Servo</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Ayuda</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Control
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="~/controlarduino/Index">Control</a>
+                                <div class="dropdown-divider"></div>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Consultas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="~/persona/consulta">Persona</a>
+                                <a class="dropdown-item" href="~/usuario/consulta">Usuario</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="~/reservorio/consulta">Reservorio</a>
+                                <a class="dropdown-item" href="~/control/consulta">Control</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Reportes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="~/persona/reporte">Persona</a>
+                                <a class="dropdown-item" href="~/usuario/reporte">Usuario</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="~/reservorio/reporte">Reservorio</a>
+                                <a class="dropdown-item" href="~/control/reporte">Control</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Graficos
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="~/reservorio/reporte">Reservorio</a>
+                                <a class="dropdown-item" href="~/control/reporte">Control</a>
+                                <div class="dropdown-divider"></div>
+                            </div>
+                        </li>
+                    </ul>
+
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                               role="button" aria-haspopup="true" aria-expanded="false">
+                                <img id="user-pic" src="~/fotousu/usuario.png" width="40" height="40" />
+                                <b>Bienvenido: </b> @usuario.Persona.apel_per, @usuario.Persona.nomb_per <span class="caret"></span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="~/perfil/Index">Perfil de Usuario</a>
+                                <a class="dropdown-item" href="~/Login/logout">Cerrar Sesi�n</a>
+                            </div>
+
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+
+        </div>
+    }
+    <div class="container">
+        <center><h1 class="jumbotron">Sistema Gestion ARTC</h1></center>
+        @RenderBody()
+    </div>
+</body>
+</html><br /><br />
+<center><b>Todos los derechos reservados © Desarrollo de Aplicaciones Web </b></center><br />
+<script src="~/estilos/js/bootstrap.js"></script>
+<!--response model-->
+<script src="~/estilos/js/ini.js"></script>
+<script src="~/estilos/js/jquery.form.js"></script>
+<script src="~/estilos/js/jquery.validate.min.js"></script>
+<script src="~/estilos/js/jquery.validate.unobtrusive.min.js"></script>

@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id="login">
+    <h1 class="page-header text-center">Autenticación en el sistema</h1>
+
+    <div class="card ">
+        <div class="card-header" >
+            <center>
+                <img src="~/loginfoto/login.png" width="300" height="200" />
+            </center>
+            
+        </div>
+        <div class="card-body">
+            
+            <div class="card-heading">Acceso al sistema</div>
+            <div class="card-body">
+                @using (Html.BeginForm("validar", "login", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label>Usuario</label>
+                        <input type="text" name="usuarios" class="form-control" placeholder="Ingrese cuenta de usuario" />
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Ingrese su password" />
+                    </div>
+                    <div class="text-right">
+                        <button data-ajax="true" type="submit" class="btn btn-primary">
+                            Ingresar
+                        </button>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>

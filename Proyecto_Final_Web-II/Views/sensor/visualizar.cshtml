@@ -1,0 +1,48 @@
+﻿@model Proyecto_Final_Web_II.Models.Sensor
+@{
+    ViewBag.Title = "visualizar";
+}
+
+<center><h2 class="card text-center">visualizar</h2></center>
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/sensor"> Sensor</a>
+        </li>
+        <li class=" breadcrumb-item active">@Model.nomb_sensor</li>
+
+    </ol>
+
+</nav>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        Informacion detallada del Sensor
+    </div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>Id</dt>
+            <dd>@Model.sensor_id</dd>
+            <dt>Nombre</dt>
+            <dd>@Model.nomb_sensor</dd>
+            <dt>Alimentacion</dt>
+            <dd>@Model.aliment_sensor</dd>
+            <dt>Rango Medicion</dt>
+            <dd>@Model.rango_med_sensor</dd>
+            <dt>Frecuencia Pulso</dt>
+            <dd>@Model.frec_pul_sensor</dd>
+            <dt>Corriente Alimentacion</dt>
+            <dd>@Model.corr_ali_sensor</dd>
+            <dt>Apertura</dt>
+            <dd>@Model.apertura_sensor</dd>
+            <dt>Señal </dt>
+            <dd>@Model.senal_disp_sensor</dd>
+            <dt>Estado</dt>
+            <dd>@Model.estado_sensor</dd>
+        </dl>
+    </div>
+
+</div>
+<br /><br />
+

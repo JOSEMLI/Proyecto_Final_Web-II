@@ -1,0 +1,42 @@
+﻿@model Proyecto_Final_Web_II.Models.Usuario
+@{
+    ViewBag.Title = "visualizar";
+}
+
+<center><h2 class="card text-center">visualizar</h2></center>
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/usuario"> Usuario</a>
+        </li>
+        <li class=" breadcrumb-item active">@Model.nomb_usu</li>
+
+    </ol>
+
+</nav>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        Informacion detallada del Usuario
+    </div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>Id</dt>
+            <dd>@Model.usuario_id</dd>
+            <dt>Persona</dt>
+            <dd>@Model.Persona.apel_per , @Model.Persona.nomb_per</dd>
+            <dt>Nombre</dt>
+            <dd>@Model.nomb_usu</dd>
+            <dt>Nivel</dt>
+            <dd>@Model.nivel_usu</dd>
+            <dt>Avatar</dt>
+            <dd>@Model.foto_usu</dd>
+            <dt>Estado</dt>
+            <dd>@Model.estado_usu</dd>
+        </dl>
+    </div>
+
+</div>
+<br /><br />
+

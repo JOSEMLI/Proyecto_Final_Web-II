@@ -1,0 +1,48 @@
+﻿@model List<Proyecto_Final_Web_II.Models.Servo>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="card text-center">Gestion de Servos</h2>
+
+<div class="text-right">
+    <a href="~/servo/agregareditar" class="btn btn-secondary text-right">
+        Nuevo registro
+    </a>
+</div>
+<br />
+
+
+<table id="datatable1" class="table">
+    <thead>
+        <tr>
+            <th style="width:50px">Id</th>
+            <th style="width:70px">Nombre</th>
+            <th style="width:70px">Torque</th>
+            <th style="width:70px">Dimension</th>
+            <th style="width:70px">Voltaje</th>
+            <th style="width:70px">Estado</th>
+            <th style="width:200px" align="center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ser in Model)
+        {
+            <tr>
+                <th>@(ser.servo_id)</th>
+                <th>@(ser.nomb_servo)</th>
+                <th>@(ser.torque_servo)</th>
+                <th>@(ser.dimens_servo)</th>
+                <th>@(ser.voltaje_servo)</th>
+                <th>@(ser.estado_servo)</th>
+                <th style="align-content:center">
+                    <a href="~/servo/visualizar/@ser.servo_id" class="btn btn-warning">Visualizar</a>
+                    <a href="~/servo/agregareditar/@ser.servo_id" class="btn btn-primary">Modificar</a>
+                    <a href="~/servo/eliminar/@ser.servo_id" class="btn btn-danger" onclick="return confirm('¿Estas seguro de eliminar... ?');">Eliminar</a>
+
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
+

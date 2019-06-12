@@ -1,0 +1,46 @@
+﻿@model Proyecto_Final_Web_II.Models.Servo
+@{
+    ViewBag.Title = "visualizar";
+}
+
+<center><h2 class="card text-center">visualizar</h2></center>
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/servo"> Servo</a>
+        </li>
+        <li class=" breadcrumb-item active">@Model.nomb_servo</li>
+
+    </ol>
+
+</nav>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        Informacion detallada del Servo
+    </div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>Id</dt>
+            <dd>@Model.servo_id</dd>
+            <dt>Nombre</dt>
+            <dd>@Model.nomb_servo</dd>
+            <dt>Torque</dt>
+            <dd>@Model.torque_servo</dd>
+            <dt>Dimension</dt>
+            <dd>@Model.dimens_servo</dd>
+            <dt>Voltaje</dt>
+            <dd>@Model.voltaje_servo</dd>
+            <dt>Velocidad Movimiento</dt>
+            <dd>@Model.vel_mov_servo</dd>
+            <dt>Peso</dt>
+            <dd>@Model.peso_servo</dd>
+            <dt>Estado</dt>
+            <dd>@Model.estado_servo</dd>
+        </dl>
+    </div>
+
+</div>
+<br /><br />
+

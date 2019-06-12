@@ -1,0 +1,78 @@
+﻿@model Proyecto_Final_Web_II.Models.Reservorio
+@{
+    ViewBag.Title = "agregareditar";
+}
+
+<center><h2 class="card text-center">Agregar Editar</h2></center>
+
+<nav aria-label="breadcrumb">
+    <ol class=" breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/reservorio"> Reservorio</a>
+        </li>
+        <li class=" breadcrumb-item active">
+            @(Model.reservorio_id > 0 ? Model.cant_agua_reser : "Nuevo Registro")
+        </li>
+    </ol>
+</nav>
+
+
+@using (Html.BeginForm("guardar", "reservorio", FormMethod.Post, new { id = "frm-reservorio" }))
+{
+    @Html.HiddenFor(x => x.reservorio_id)
+
+    <div class="card">
+        <div class="card-header">
+            Informacion del Reservorio
+            <div class="card-body">
+                <div class="form-group">
+                    @Html.Label("Id")
+                    @Html.TextBoxFor(x => x.reservorio_id, new { @class = "form-control", disabled = true })
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Sensor")
+                    @Html.TextBoxFor(x => x.sensor_id, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.sensor_id, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Servo")
+                    @Html.TextBoxFor(x => x.servo_id, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.servo_id, null, new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Cantidad Agua")
+                    @Html.TextBoxFor(x => x.cant_agua_reser, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.cant_agua_reser, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Distancia")
+                    @Html.TextBoxFor(x => x.dist_llenado_reser, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.dist_llenado_reser, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Fecha")
+                    @Html.TextBoxFor(x => x.fecha_reser, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.fecha_reser, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Estado")
+                    <select name="estado_reservorio" class="form-control">
+                        <option @(Model.estado_reservorio == "" ? "Selected" : "") value="">-Seleccione-</option>
+                        <option @(Model.estado_reservorio == "A" ? "Selected" : "") value="A">Activo</option>
+                        <option @(Model.estado_reservorio == "I" ? "Selected" : "") value="I">Inactivo</option>
+                    </select>
+                    @Html.ValidationMessageFor(x => x.estado_reservorio, null, new { @class = "text-danger" })
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="card text-right">
+        <button type="submit" class="btn btn-primary">Grabar</button>
+        <a href="~/reservorio" class="btn btn-danger">Cancelar</a>
+    </div>
+    <br /><br />
+}
